@@ -10,6 +10,22 @@ namespace WarCroft.Entities.Characters.Contracts
 
 		public bool IsAlive { get; set; } = true;
 
+		private string name;
+
+		public string Name
+		{
+			get { return name; }
+			set
+			{
+				if (String.IsNullOrWhiteSpace(value))
+				{
+					throw new ArgumentNullException(ExceptionMessages.CharacterNameInvalid);
+				}
+				name = value;
+			}
+		}
+
+
 		protected void EnsureAlive()
 		{
 			if (!this.IsAlive)
